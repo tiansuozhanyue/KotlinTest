@@ -8,10 +8,10 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.administrator.kotlintest"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,9 +32,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     //anko
-    compile "org.jetbrains.anko:anko-sdk15:0.9.1" // So here it's 15 too
+    compile "org.jetbrains.anko:anko-sdk15:0.9.1"
     compile "org.jetbrains.anko:anko-appcompat-v7:0.9.1"
     compile "org.jetbrains.anko:anko-design:0.9.1"
     compile "org.jetbrains.anko:anko-recyclerview-v7:0.9.1"
+
+    compile 'com.squareup.okhttp3:okhttp:3.3.0'
+
+    compile 'org.greenrobot:eventbus:3.1.1'
 
 }

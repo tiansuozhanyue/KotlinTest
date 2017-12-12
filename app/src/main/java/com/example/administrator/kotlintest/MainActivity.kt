@@ -1,107 +1,36 @@
 package com.example.administrator.kotlintest
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
-import android.view.Gravity
-import android.widget.LinearLayout
+import com.example.administrator.kotlintest.calculator.CalculatorActivity
+import com.example.administrator.kotlintest.imgshow.ImageShowActivity
 import org.jetbrains.anko.*
-import java.math.BigDecimal
 
-class MainActivity : AppCompatActivity() {
+/**
+ * Created by Administrator on 2017/12/8.
+ */
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        title = "kotlin测试"
-        deawUI()
+    override fun setTitle(): String? {
+        return "首页"
     }
 
-    fun deawUI() {
+    override fun draWUI() {
         verticalLayout {
-
-            val edit00 = editText {
-                hint = "输入第一个数字"
-                inputType = InputType.TYPE_CLASS_NUMBER
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
-            val edit01 = editText {
-                hint = "输入第二个数字"
-                inputType = InputType.TYPE_CLASS_NUMBER
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
-            linearLayout {
-                orientation = LinearLayout.HORIZONTAL
-
-                val btn = button("乘").lparams(wrapContent, matchParent)
-
-                val tet = textView { gravity = Gravity.CENTER_VERTICAL }.lparams(matchParent, matchParent) { leftMargin = dip(10) }
-
-                btn.onClick {
-                    if (edit00.text.isNullOrEmpty())
-                        toast("请输入第一个数字")
-                    else if (edit01.text.isNullOrEmpty())
-                        toast("请输入第二个数字")
-                    else
-                        tet.text = BigDecimal(edit00.text.toString()).multiply(BigDecimal(edit01.text.toString())).toString()
+            button("计算器") {
+                onClick {
+                    startActivity(Intent(this@MainActivity, CalculatorActivity::class.java))
                 }
+            }.lparams(matchParent, dip(44)) { margin = dip(15) }
 
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
-            linearLayout {
-                orientation = LinearLayout.HORIZONTAL
-
-                val btn = button("除").lparams(wrapContent, matchParent)
-
-                val tet = textView { gravity = Gravity.CENTER_VERTICAL }.lparams(matchParent, matchParent) { leftMargin = dip(10) }
-
-                btn.onClick {
-                    if (edit00.text.isNullOrEmpty())
-                        toast("请输入第一个数字")
-                    else if (edit01.text.isNullOrEmpty())
-                        toast("请输入第二个数字")
-                    else
-                        tet.text = BigDecimal(edit00.text.toString()).divide(BigDecimal(edit01.text.toString())).setScale(4, BigDecimal.ROUND_HALF_DOWN).toString()
+            button("美图欣赏") {
+                onClick {
+                    startActivity(Intent(this@MainActivity, ImageShowActivity::class.java))
                 }
-
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
-            linearLayout {
-                orientation = LinearLayout.HORIZONTAL
-
-                val btn = button("加").lparams(wrapContent, matchParent)
-
-                val tet = textView { gravity = Gravity.CENTER_VERTICAL }.lparams(matchParent, matchParent) { leftMargin = dip(10) }
-
-                btn.onClick {
-                    if (edit00.text.isNullOrEmpty())
-                        toast("请输入第一个数字")
-                    else if (edit01.text.isNullOrEmpty())
-                        toast("请输入第二个数字")
-                    else
-                        tet.text = BigDecimal(edit00.text.toString()).add(BigDecimal(edit01.text.toString())).toString()
-                }
-
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
-            linearLayout {
-                orientation = LinearLayout.HORIZONTAL
-
-                val btn = button("减").lparams(wrapContent, matchParent)
-
-                val tet = textView { gravity = Gravity.CENTER_VERTICAL }.lparams(matchParent, matchParent) { leftMargin = dip(10) }
-
-                btn.onClick {
-                    if (edit00.text.isNullOrEmpty())
-                        toast("请输入第一个数字")
-                    else if (edit01.text.isNullOrEmpty())
-                        toast("请输入第二个数字")
-                    else
-                        tet.text = BigDecimal(edit00.text.toString()).subtract(BigDecimal(edit01.text.toString())).toString()
-                }
-
-            }.lparams(matchParent, dip(40)) { topMargin = dip(10) }
-
+            }.lparams(matchParent, dip(44)) { margin = dip(15) }
         }
     }
+
+    override fun setListener() {}
 
 }

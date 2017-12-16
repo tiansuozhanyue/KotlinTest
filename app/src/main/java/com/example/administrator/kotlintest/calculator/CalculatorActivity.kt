@@ -30,8 +30,6 @@ class CalculatorActivity : BaseActivity() {
     override fun draWUI() {
         relativeLayout {
 
-            background
-
             text = textView("0") {
                 backgroundResource = R.drawable.text_edit_shape
                 padding = dip(15)
